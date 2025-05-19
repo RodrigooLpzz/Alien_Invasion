@@ -10,6 +10,7 @@ from button import Button
 from ship import Ship
 from bullet import Bullet
 from alien import Alien
+import sound_effects as se
 
 
 class AlienInvasion:
@@ -120,6 +121,7 @@ class AlienInvasion:
         if len(self.bullets) < self.settings.bullets_allowed:
             new_bullet = Bullet(self)
             self.bullets.add(new_bullet)
+            se.bullet_sound.play()
 
     def _update_bullets(self):
         """Update position of bullets and get rid of old bullets"""

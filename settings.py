@@ -30,7 +30,7 @@ class Settings:
     
     def initialize_dynamic_settings(self):
         self.ship_speed = 10
-        self.alien_speed = 3.0
+        self.alien_speed = 5.0
         self.bullet_speed = 5
 
         # fleet_direction of 1 represents right; -1 represent left
