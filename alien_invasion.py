@@ -46,6 +46,7 @@ class AlienInvasion:
 
         #Start Alien Invasion in an active state
         self.game_active = False
+        self.playing_with_ia = False
 
         # Make the play button
         self.play_button = Button(self, "Play")
@@ -81,23 +82,31 @@ class AlienInvasion:
         """Start a new game when the player clicks Play"""
         button_clicked = self.play_button.rect.collidepoint(mouse_pos)
         if button_clicked and not self.game_active:
-            # Reset the game settings
-            self.settings.initialize_dynamic_settings()
+            self._start_game()
 
-            self.stats.reset_stats()
-            self.sb.prep_score()
-            self.sb.prep_level()
-            self.sb.prep_ships()
-            self.game_active = True
+    def _check_play_buttom(self):
+        if not self.game_active and self.playing_with_ia:
+            self._start_game()
 
-            self.bullets.empty()
-            self.aliens.empty()
 
-            # Createa new fleet and center the ship
-            self._create_fleet()
-            self.ship.center_ship()
+    def _start_game(self):
+        # Reset the game settings
+        self.settings.initialize_dynamic_settings()
 
-            pygame.mouse.set_visible(False)
+        self.stats.reset_stats()
+        self.sb.prep_score()
+        self.sb.prep_level()
+        self.sb.prep_ships()
+        self.game_active = True
+
+        self.bullets.empty()
+        self.aliens.empty()
+
+        # Createa new fleet and center the ship
+        self._create_fleet()
+        self.ship.center_ship()
+
+        pygame.mouse.set_visible(False)
 
     
     def _check_keydown_events(self, event):
