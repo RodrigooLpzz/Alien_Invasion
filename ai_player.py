@@ -76,6 +76,7 @@ class AIPlayer:
 
     def _get_target_alien(self):
         """Get a specific alien to target."""
+        bot_x = self.ai_game.ship.rect.centerx
         # Find the right-most alien in the bottom row.
         #   Pick the first alien in the group. Then compare all others, 
         #   and return the alien with the greatest x and y rect attributes.
@@ -87,10 +88,10 @@ class AIPlayer:
             elif alien.rect.y < target_alien.rect.y:                    # 5
                 # This alien is above target_alien.
                 continue
-            elif alien.rect.x > target_alien.rect.x:                    # 6
-                # This alien is in the same row, but farther right.
-                target_alien = alien
-        
+            else:
+                if abs(alien.rect.x - bot_x) < abs(target_alien.rect.x - bot_x):
+                    target_alien = alien
+
         return target_alien
         
 
