@@ -7,7 +7,11 @@ class Scoreboard:
     """A class to report scoring information"""
 
     def __init__(self, ai_game):
-        """Intialize scorekeeping attributes"""
+        """
+        Initialize scorekeeping attributes
+            Args:
+                ai_game: An instance of the Alien Invasion game
+        """
         self.ai_game = ai_game
         self.screen = ai_game.screen
         self.screen_rect = self.screen.get_rect()
@@ -29,7 +33,7 @@ class Scoreboard:
         rounded_score = round(self.stats.score, -1)
         score_str = f"{rounded_score:,}"
         self.score_image = self.font.render(score_str, True, 
-                            self.text_color, self.settings.bg_color)
+                            self.text_color, self.settings.bg_color) # -> Surface
 
         # Display the score at the top right of the screen
         self.score_rect = self.score_image.get_rect()
@@ -71,7 +75,7 @@ class Scoreboard:
 
 
     def show_score(self):
-        """Draw score to the screen"""
+        """Draw score, high score, level, and remaining ships to the screen"""
         self.screen.blit(self.score_image, self.score_rect)
         self.screen.blit(self.high_score_image, self.high_score_rect)
         self.screen.blit(self.level_image, self.level_rect)

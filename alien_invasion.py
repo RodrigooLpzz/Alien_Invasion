@@ -23,7 +23,7 @@ class AlienInvasion:
         self.settings = Settings() #Initialize the class Settings
 
         #FULL SCREEN
-        self.screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
+        self.screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN) # -> Returns a Surface
         self.settings.screen_width = self.screen.get_rect().width
         self.settings.screen_height = self.screen.get_rect().height
         pygame.display.set_caption("Alien Invasion")
@@ -79,7 +79,12 @@ class AlienInvasion:
                 self._check_play_button(mouse_pos)
 
     def _check_play_button(self, mouse_pos):
-        """Start a new game when the player clicks Play"""
+        """
+        Start a new game when the player clicks Play
+            Args: 
+                mouse_pos (Tuple[int, int]): The position of the mouse click
+            To check if the click collides with the button
+        """
         button_clicked = self.play_button.rect.collidepoint(mouse_pos)
         if button_clicked and not self.game_active:
             self._start_game()
@@ -110,6 +115,11 @@ class AlienInvasion:
 
     
     def _check_keydown_events(self, event):
+        """
+        Respond to keypresses.
+            Args:
+                event: (pygame.event.Event): The keydown event to handle.
+        """
         if event.key == pygame.K_RIGHT:
             self.ship.moving_right = True
         elif event.key == pygame.K_LEFT:
@@ -120,6 +130,11 @@ class AlienInvasion:
             self._fire_bullet()
     
     def _check_keyup_events(self, event):
+        """
+            Respond to key releases.
+             Args:
+                event: (pygame.event.Event): The keydown event to handle.
+        """
         if event.key == pygame.K_RIGHT:
             self.ship.moving_right = False
         elif event.key == pygame.K_LEFT:
@@ -179,7 +194,12 @@ class AlienInvasion:
         self._check_aliens_bottom()
 
     def _create_alien(self, x_position, y_position):
-        """Create a alien and place it in the row"""
+        """
+        Create a alien and place it in the row
+            Args:
+                x_position (int): THe x-coordinate where the alien will be placed
+                y_position (int): The y-coordinate where the alien will be placed
+        """
         new_alien = Alien(self)
         new_alien.x = x_position
         new_alien.rect.x = x_position

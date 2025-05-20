@@ -56,7 +56,7 @@ class AIPlayer:
         target_alien = self._get_target_alien()
         ship = self.ai_game.ship
 
-        # Moverse hacia el alien
+        # Moving the alien
         if ship.rect.centerx < target_alien.rect.centerx - 5:
             ship.moving_right = True
             ship.moving_left = False
@@ -64,11 +64,11 @@ class AIPlayer:
             ship.moving_right = False
             ship.moving_left = True
         else:
-            # Ya está alineado con el alien
+            # If the alien is at the same y of the traget
             ship.moving_right = False
             ship.moving_left = False
 
-            # Si no hay balas, dispara
+            # Just one bullet in the screen
             if len(self.ai_game.bullets) == 0:
                 self.ai_game._fire_bullet()
 

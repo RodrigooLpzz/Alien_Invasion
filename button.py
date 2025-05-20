@@ -4,7 +4,12 @@ class Button:
     """A class to build buttons for the game"""
 
     def __init__(self, ai_game, msg):
-        """Initialize button attributes"""
+        """
+        Initialize button attributes
+            Args:
+                ai_game: An instance of the Alien Invasion game 
+                msg: String to be displayed on the button
+        """
         self.screen = ai_game.screen
         self.screen_rect = self.screen.get_rect()
 
@@ -22,9 +27,13 @@ class Button:
         self._prep_msg(msg)
 
     def _prep_msg(self, msg):
-        """Turn msg into a rendered image and center text on the buttom"""
+        """
+        Turn msg into a rendered image and center text on the buttom
+            Args:
+                msg: String to be displayed on the button
+        """
         self.msg_image = self.font.render(msg, True, self.text_color,
-                                          self.button_color)
+                                          self.button_color) # -> Surface
         self.msg_image_rect = self.msg_image.get_rect()
         self.msg_image_rect.center = self.rect.center
 

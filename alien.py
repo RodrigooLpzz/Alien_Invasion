@@ -2,10 +2,18 @@ import pygame
 from pygame.sprite import Sprite
 
 class Alien(Sprite):
-    """A class to represent a single alien in the fleet"""
+    """
+    A class to represent a single alien in the fleet
+        Inherits:
+            pygame.sprite.Sprite 
+    """
 
     def __init__(self, ai_game):
-        """Initialize the alien and set its starting position"""
+        """
+        Initialize the alien and set its starting position
+            Args:
+                ai_game: An instance of the Alien Invasion game 
+        """
         super().__init__()
         self.screen = ai_game.screen
         self.settings = ai_game.settings

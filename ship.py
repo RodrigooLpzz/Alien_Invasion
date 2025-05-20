@@ -2,17 +2,25 @@ import pygame
 from pygame.sprite import Sprite
 
 class Ship(Sprite):
-    '''A class to manage the ship'''
+    '''
+    A class to manage the ship
+       Inherits:
+            pygame.sprite.Sprite 
+    '''
 
     def __init__(self, ai_game):
-        """Initialize the ship and set its starting position"""
+        """
+        Initialize the ship and set its starting position
+            Args:
+                ai_game: An instance of the Alien Invasion game        
+        """
         super().__init__()
         self.screen = ai_game.screen
         self.settings = ai_game.settings
         self.screen_rect = ai_game.screen.get_rect()
 
         #Load the ship images and get its rect.
-        self.image = pygame.image.load('images/DurrrSpaceShip.bmp')
+        self.image = pygame.image.load('images/DurrrSpaceShip.bmp') # -> Surface
         self.rect = self.image.get_rect()
 
         #Start each new ship at the bottom center of the screen
